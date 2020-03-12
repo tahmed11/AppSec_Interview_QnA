@@ -1,11 +1,32 @@
 
-	1. Basic linux question: 
-		a. TCP handshake
-		b. Port numbers: Kerberos, syslogin, FTP, SMTP, RDP, IMAP, POP3, Telnet, SSH, SNMP, LDAP, DNS, SMB
-		c. Subnet calculate: /22 or how many hosts in /22
-		d. Ipv6 number of address 
-		e. Ipv4 number of address 
-		f. Unix vs linux
+### Basic linux question:
+#### TCP
+   TCP Flags: SYN, ACK, RST, FIN, PSH, URG
+   TCP handshake
+      host A:SYN
+      host B: SYN-ACK            
+      host C: SYN
+   End TCP connection:
+      host A: FIN
+      host B: FIN-ACK            
+      host C: ACK
+      
+ #### Port numbers: 
+   Kerberos - 88, syslogin- 514, FTP-20/21, SMTP-25, RDP-3389, IMAP-143, POP3-110, Telnet-23, SSH-22, SNMP-161, LDAP-389,
+   DNS-53, SMB-445, 135-139
+   
+#### Ipv4 number of address: 2^32 
+8.8.8.8 => 8 bits 4*8 = 32
+
+#### Ipv6 number of address: 2^128
+
+#### Subnet calculate: 
+/22 or how many hosts in /22
+2^32-22 = 2^10 (1024) hosts
+192.x.x.x/22 => 1024 hosts
+
+#### Unix vs linux
+Unix
 		g. Redhat vs debian 
 	2. Encryption
 		a. Diffie Hellman
