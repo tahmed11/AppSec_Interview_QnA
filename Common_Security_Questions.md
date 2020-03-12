@@ -3,7 +3,8 @@
 #### OSI model
 All People Seems To Need Data Processing
 
-| # | Layer | Protocol | 
+| # | Layer | Protocol |
+| --- | --- | --- |
 | 1 | Physical| Ethernet, 802.11 a/b/g/n|
 | 2 | Data | Ethernet, 802.11 a/b/g/n |
 | 3 | Network | IP, ICMP, IGM, OSPF, RIP, IPSEC |
