@@ -2,15 +2,15 @@
 ### Basic linux question:
 #### OSI model
 All People Seems To Need Data Processing
-|Layer |Protocol | 
-|Physical| Ethernet, 802.11 a/b/g/n|
-|Data | Ethernet, 802.11 a/b/g/n |
-|Network| IP, ICMP, IGM, OSPF, RIP, IPSEC |
-|Transport | TCP, UDP |
-|Session | Sockets, SOCKS, RPC, NetBIOS, Named pipes |
-|Presentation| SSL, TLS, MIME |
-|Application| HTTP, Websockets |
 
+| # | Layer | Protocol | 
+| 1 | Physical| Ethernet, 802.11 a/b/g/n|
+| 2 | Data | Ethernet, 802.11 a/b/g/n |
+| 3 | Network | IP, ICMP, IGM, OSPF, RIP, IPSEC |
+| 4 | Transport | TCP, UDP |
+| 5 | Session | Sockets, SOCKS, RPC, NetBIOS, Named pipes |
+| 6 | Presentation | SSL, TLS, MIME |
+| 7 | Application | HTTP, Websockets |
 
 #### TCP
    TCP Flags: SYN, ACK, RST, FIN, PSH, URG
@@ -132,6 +132,37 @@ HMAC is used for data integrity and authenticity of messages.
 		e. SAML
 		f. Kerberos
 		g. NTLM 
+### Authentication 		
+#### SAML
+SAML SSO works by transferring the user’s identity from one place (the identity provider) to another (the service provider). This is done through an exchange of digitally signed XML documents.
+
+Consider the following scenario: A user is logged into a system that acts as an identity provider. The user wants to log in to a remote application, such as a support or accounting application (the service provider). The following happens:
+
+1. The user accesses the remote application using a link on an intranet, a bookmark, or similar and the application loads.
+2. The application identifies the user’s origin (by application subdomain, user IP address, or similar) and redirects the user back to the identity provider, asking for authentication. This is the authentication request.
+3. The user either has an existing active browser session with the identity provider or establishes one by logging into the identity provider.
+4. The identity provider builds the authentication response in the form of an XML-document containing the user’s username or email address, signs it using an X.509 certificate, and posts this information to the service provider.
+5. The service provider, which already knows the identity provider and has a certificate fingerprint, retrieves the authentication response and validates it using the certificate fingerprint.
+6. The identity of the user is established and the user is provided with app access.
+
+
+
+#### Threat Modeling 
+There are five major threat modeling steps:
+1.  Defining security requirements. 
+		a. For example, “The application shall not allow any customer to access the account information of any other customer"
+2.  Creating an application diagram.  (DFD)
+3.  Identifying threats. (STRIDE) 
+		○ Spoofing
+		○ Tampering
+		○ Repudiation
+		○ Information Disclosure
+		○ Denial of service
+		○ Elevation of privilege
+4.  Mitigating threats. 
+5. Validating that threats have been mitigated. 
+
+
 	10. Google dorks: 
 		a. How to narrow search to a site 
 		b. How to find specific string in URL
@@ -152,7 +183,7 @@ char buff[10];
 strcpy(buff,str);
 }
 
-Mitigation of buffer overflow:
+<b> Mitigation of buffer overflow</b>:
 1. Dont use vulnerable functions such as strcpy, etc.
 2. Always do bound checking
 3. Enabled by default ASLR -> Address space layout randomization
@@ -176,11 +207,11 @@ Risk = Impact x Likelihood
 Mechanism used to restrain, regulate or reduce vulnerabilities. Controls can be corrective, detective, preventive or deterrent. 
 
 ### NIST Cyber security framework:
-1. Identify
-2. Protect
-3. Detect
-4. Respond
-5. Recover
+	1. Identify
+	2. Protect
+	3. Detect
+	4. Respond
+	5. Recover
 
 
 	14. Appsec
