@@ -26,12 +26,32 @@
 192.x.x.x/22 => 1024 hosts
 
 #### Unix vs linux
-Unix
-		g. Redhat vs debian 
-	2. Encryption
-		a. Diffie Hellman
-		b. RSA 
-		c. SSL handshake 
+| Unix | Linux | 
+|--- | --- |
+|Proprietory | Open Source |
+|Ex: MacOs, HP-UX, AIS, BSD, etc | Ubuntu, Fedora, CentOS, RedHat |
+|Unix is not portable | Can be booted from USB stick |
+|Unix is complete OS | Linux is mainly the kernel, everything else GUI + Utilities comes from distribution such as ubuntu, redhat,etc|
+
+#### Redhat vs debian 
+Main difference package manager.
+Redhat yum -> rpm package manager
+Debian apt -> deb package manager
+
+### Encryption
+#### Symmetric vs Asymmetric 
+#### Diffie Hellman
+Generate a shared secret in public for later symmetric encryption
+#### RSA
+Pregnerated public/private key pair to agree on a symmetric encryption
+
+#### SSL handshake [One-way]
+1. SSL Client sends "client hello" to server.
+2. SSL Server responds with "Server hello" with list of cipher suites and server certificate
+3. Client verify server certificate and chose the stronger cipher suite supported
+4. Client key exchange: Send secret key encrypted with server public key.
+5. Exchange message with encrypted shared secret key. 
+
 		d. Digital signature
 		e. HMAC 
 	3. DNS
@@ -94,13 +114,28 @@ Unix
 		b. How to find specific string in URL
 		c. How to return only certain specific file format
 		d. How to return text found in body 
-	11. Buffer overflow: 
+#### Buffer overflow: 
 		a. ESP register 
 		b. EIP register 
 		c. Mitigation of buffer overflow 
 		d. Egghunter 
 		e. Stack canary 
 		f. Direction of stack 
+
+There are different kind of buffer overflow vulnerabilities like stack based, heap based. Stack based are the most simplistic ones. As the name suggests stack based buffer overflow occurs due to overwrite of buffer space in memory. The below C program is vulnerable to buffer overflow. The main function call a vulnerable function. The vulnerable function takes 10 character strings as input parameter. Inside the function we use a vulnerable parameter to a fixed size buffer of 10 character size. When the main function calls the vulnerable function few things happen to the stack. First the parameter of the vulnerable function  will be pushed to the stack, then the return address of the main function will be saved on the stack. Once the function finish executing, stack pointer will return to this address to continue program execution. 
+
+
+Vulnerable program:
+void main(int argc, char *argv[]):
+	{
+	vuln_function(argv[1])
+	return 0
+	}
+void vuln_function(char *str):
+{
+char buff[10];
+strcpy(buff,str);
+}
 	12. Risk
 		a. Define vulnerability
 		b. Define risk 
