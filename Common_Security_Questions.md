@@ -1,5 +1,17 @@
 
 ### Basic linux question:
+#### OSI model
+All People Seems To Need Data Processing
+|Layer |Protocol | 
+|Physical| Ethernet, 802.11 a/b/g/n|
+|Data | Ethernet, 802.11 a/b/g/n |
+|Network| IP, ICMP, IGM, OSPF, RIP, IPSEC |
+|Transport | TCP, UDP |
+|Session | Sockets, SOCKS, RPC, NetBIOS, Named pipes |
+|Presentation| SSL, TLS, MIME |
+|Application| HTTP, Websockets |
+
+
 #### TCP
    TCP Flags: SYN, ACK, RST, FIN, PSH, URG
    TCP handshake
@@ -52,8 +64,19 @@ Pregnerated public/private key pair to agree on a symmetric encryption
 4. Client key exchange: Send secret key encrypted with server public key.
 5. Exchange message with encrypted shared secret key. 
 
-		d. Digital signature
-		e. HMAC 
+#### Digital signature
+Sign with private key, receiver verifies with public key. 
+
+#### HMAC (Hashed based Message Authentication Code)
+MAC = hash(Key | Message)
+We dont only use MAC because it is weak and subject to length extension attack, hence HMAC is used. 
+
+HMAC Secret key => k shared between two parties. 
+k => k1 and k2 
+two subkeys (k1 and k2) are derived from k.
+HMAC = hash(k2 | hash(k1|message))
+HMAC is used for data integrity and authenticity of messages. 
+
 	3. DNS
 		a. How does dns works 
 		b. Cname
@@ -115,13 +138,6 @@ Pregnerated public/private key pair to agree on a symmetric encryption
 		c. How to return only certain specific file format
 		d. How to return text found in body 
 #### Buffer overflow: 
-		a. ESP register 
-		b. EIP register 
-		c. Mitigation of buffer overflow 
-		d. Egghunter 
-		e. Stack canary 
-		f. Direction of stack 
-
 There are different kind of buffer overflow vulnerabilities like stack based, heap based. Stack based are the most simplistic ones. As the name suggests stack based buffer overflow occurs due to overwrite of buffer space in memory. The below C program is vulnerable to buffer overflow. The main function call a vulnerable function. The vulnerable function takes 10 character strings as input parameter. Inside the function we use a vulnerable function(strcpy) to a fixed size buffer of 10 character size. When the main function calls the vulnerable function few things happen to the stack. First the parameter of the vulnerable function  will be pushed to the stack, then the return address of the main function will be saved on the stack. Once the function finish executing, stack pointer will return to this address to continue program execution. Now if we send a parameter with more than 10 characters say 100 character, then the return address will overwrite the buffer. Strcpy will copy the extra 90 characters beyond the allocated space. Since we control the buffer we can control arbitary memory address as the return address. Then the program execution will jump to the arbitary address where we can put our shellcode. 
 
 Vulnerable program:
@@ -135,12 +151,38 @@ void vuln_function(char *str):
 char buff[10];
 strcpy(buff,str);
 }
-	12. Risk
-		a. Define vulnerability
-		b. Define risk 
-		c. Define threat 
-		d. Define Control 
-	13. Container security - TBC
+
+Mitigation of buffer overflow:
+1. Dont use vulnerable functions such as strcpy, etc.
+2. Always do bound checking
+3. Enabled by default ASLR -> Address space layout randomization
+4. DEP -> Dynamic execution prevention
+	bypass DEP -> ROP gadget
+5. Stack canaries
+
+
+### Risk
+#### Vulnerability
+A weakness in a system or asset that makes a threat potentially more likely to occur.
+
+#### Threat 
+Any circumstance that may have a negatic impact to an asset. 
+
+####  Risk 
+Risk is combination of threat probability and loss/impact to business. 
+Risk = Impact x Likelihood
+
+#### Control 
+Mechanism used to restrain, regulate or reduce vulnerabilities. Controls can be corrective, detective, preventive or deterrent. 
+
+### NIST Cyber security framework:
+1. Identify
+2. Protect
+3. Detect
+4. Respond
+5. Recover
+
+
 	14. Appsec
 	15. CORS
 	16. Same origin policy
