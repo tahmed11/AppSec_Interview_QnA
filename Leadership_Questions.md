@@ -1,4 +1,3 @@
-STAR principles
 • Tell me a challenge you had where the best way forward was not clear-cut.
 • Tell me about a time you had to work hard to please a client.
 • Give me an example of something you tried to accomplish but failed.
@@ -14,7 +13,7 @@ STAR principles
 • Invent and simplify?
 • Disagreement with boss? Bias for action? Don’t overthink
 • Do more with less?
-•Made a serious mistake?
+• Made a serious mistake?
 
 Always remembeer to use STAR principle when answering questions: 
 
