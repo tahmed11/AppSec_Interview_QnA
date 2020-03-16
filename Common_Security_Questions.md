@@ -149,8 +149,24 @@ Consider the following scenario: A user is logged into a system that acts as an 
 5. The service provider, which already knows the identity provider and has a certificate fingerprint, retrieves the authentication response and validates it using the certificate fingerprint.
 6. The identity of the user is established and the user is provided with app access.
 
-<<img>>
+![SAML image](https://developers.onelogin.com/assets/img/pages/saml/sso-diagram.svg)
+
 #### OpenID connect
+
+![OpenID Connect](https://miro.medium.com/max/236/1*FdNO85lCooAVlnrEa-lxvQ.jpeg) 
+
+![OpenID connect - Authorisation code grant](https://miro.medium.com/max/655/1*h1u_qXi3Np3kYu_eqG3hFw.jpeg) 
+1. End user wants to login to your application via “Login with Google” and send the request to your application. 
+2. Client application redirects the user to Google login page. 
+3. This is where the user is presented with Login page or if already logged in then ask for consent.
+4. User grants their consent or reject.
+5. If the user grants access then the authorization server will send an authorization code to the client.
+6. With the authorization code, the Client requests for an access token and ID token. ID token is a unique identifier of the end user.
+7. With the access token, the application asks the resource server to ask for specific resources such as user’s contact details from Google contacts, etc.
+
+
+For full OpenID connect you can visit my other blog post [here](https://medium.com/faun/threat-modeling-openid-connect-oauth-2-0-for-beginners-using-owasp-threat-dragon-part-1-b9e396fd7af9)
+
 #### Oauth 2.0
 #### Kerberos
 #### NTLM 
@@ -172,10 +188,11 @@ There are five major threat modeling steps:
 
 
 #### Google dorks: 
-		a. How to narrow search to a site 
-		b. How to find specific string in URL
-		c. How to return only certain specific file format
-		d. How to return text found in body 
+a. How to narrow search to a site 
+b. How to find specific string in URL
+c. How to return only certain specific file format
+d. How to return text found in body
+
 #### Buffer overflow: 
 There are different kind of buffer overflow vulnerabilities like stack based, heap based. Stack based are the most simplistic ones. As the name suggests stack based buffer overflow occurs due to overwrite of buffer space in memory. The below C program is vulnerable to buffer overflow. The main function call a vulnerable function. The vulnerable function takes 10 character strings as input parameter. Inside the function we use a vulnerable function(strcpy) to a fixed size buffer of 10 character size. When the main function calls the vulnerable function few things happen to the stack. First the parameter of the vulnerable function  will be pushed to the stack, then the return address of the main function will be saved on the stack. Once the function finish executing, stack pointer will return to this address to continue program execution. Now if we send a parameter with more than 10 characters say 100 character, then the return address will overwrite the buffer. Strcpy will copy the extra 90 characters beyond the allocated space. Since we control the buffer we can control arbitary memory address as the return address. Then the program execution will jump to the arbitary address where we can put our shellcode. 
 
@@ -224,16 +241,16 @@ Mechanism used to restrain, regulate or reduce vulnerabilities. Controls can be 
 
 #### Same origin policy
 Same origin policy defines:
-1.	Each site has it’s own resources like cookie, DOM and javascript namespace
-2.	Each page take it’s origin from it’s URL (protocol, domain and port).
-3.	Script run it in the context of the origin which they are loaded. It doesn’t matter where you load it from only where it is finally executed. 
-4.	Many resources like media and image are passive resources. They don’t have access to objects and resources in the context they are loaded. 
+1.Each site has it’s own resources like cookie, DOM and javascript namespace
+2.Each page take it’s origin from it’s URL (protocol, domain and port).
+3.Script run it in the context of the origin which they are loaded. It doesn’t matter where you load it from only where it is finally executed. 
+4.Many resources like media and image are passive resources. They don’t have access to objects and resources in the context they are loaded. 
 Example: 
 A site with origin A can:
-1.	Load a script from origin B, but it works in A’s context. 
-2.	Can load from images, CSS, videos from Site B.
-3.	Can load a page from origin B by iframe.
-4.	Cannot reach DOM of the iframe loaded from Origin B. 
+1.Load a script from origin B, but it works in A’s context. 
+2.Can load from images, CSS, videos from Site B.
+3.Can load a page from origin B by iframe.
+4.Cannot reach DOM of the iframe loaded from Origin B. 
 #### CORS 
 When a browser loads a webpage, it enforces Same origin policy which means that it only allows content to be fetched from the same origin as the web page. However in some cases a webpage may need to access assets from multiple origins. 
 
