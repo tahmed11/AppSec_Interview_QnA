@@ -1,20 +1,20 @@
 
-[x]Tell me a challenge you had where the best way forward was not clear-cut.
-[x]Tell me about a time you had to work hard to please a client.
-[x]Give me an example of something you tried to accomplish but failed.
-[x]Give me an example of a time when you showed initiative.
-[x]Give me an example of a time when you motivated others.
-[x]Tell me about a time when you delegated a project effectively.
-[x]A time when you failed to work as part of the team, and what you learned from it?
-[x]Tell me about a time when you coached someone.
-[x]When have you used your fact-finding skills to solve a problem?
-[x]Walk us through a time when you helped a customer through a difficult process and what that looked like?
-[x]Give me an example of when you took a risk and it failed.
-[x]Describe a time when your  security solution caused a problem?
-[x]Invent and simplify?
-[x]Disagreement with boss? Bias for action? Don’t overthink
-[x]Do more with less?
-[x]Made a serious mistake?
+[x] Tell me a challenge you had where the best way forward was not clear-cut.
+[x] Tell me about a time you had to work hard to please a client.
+[x] Give me an example of something you tried to accomplish but failed.
+[x] Give me an example of a time when you showed initiative.
+[x] Give me an example of a time when you motivated others.
+[x] Tell me about a time when you delegated a project effectively.
+[x] A time when you failed to work as part of the team, and what you learned from it?
+[x] Tell me about a time when you coached someone.
+[x] When have you used your fact-finding skills to solve a problem?
+[x] Walk us through a time when you helped a customer through a difficult process and what that looked like?
+[x] Give me an example of when you took a risk and it failed.
+[x] Describe a time when your  security solution caused a problem?
+[x] Invent and simplify?
+[x] Disagreement with boss? Bias for action? Don’t overthink
+[x] Do more with less?
+[x] Made a serious mistake?
 
 Always remembeer to use STAR principle when answering questions: 
 
