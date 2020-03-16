@@ -170,17 +170,17 @@ For full OpenID connect you can visit my other blog post [here](https://medium.c
 
 #### Threat Modeling 
 There are five major threat modeling steps:
-1.  Defining security requirements. 
+1. Defining security requirements. 
 		a. For example, “The application shall not allow any customer to access the account information of any other customer"
-2.  Creating an application diagram.  (DFD)
-3.  Identifying threats. (STRIDE) 
+2. Creating an DFD application diagram.  
+3. Identifying threats. (STRIDE) 
 		○ Spoofing
 		○ Tampering
 		○ Repudiation
 		○ Information Disclosure
 		○ Denial of service
 		○ Elevation of privilege
-4.  Mitigating threats. 
+4. Mitigating threats. 
 5. Validating that threats have been mitigated. 
 
 
@@ -250,14 +250,14 @@ Do take the time to learn how to manually exploit SQL injection.
 Types of XSS
 1. Reflected XSS: Requests get bounced back from the server. 
 2. Stored XSS: Requests are stored and sent back from the server. 
-3. Dom based XSS
-	XSS payload is executed as a result of modifying the DOM environment in the victim’s browser. The payload never gets sent to the server. Example: 
-	<script>document.write(“<b>current url: </b>:”+document.baseURI);</script>
-	attack payload: http://example.com/test.html#<script>alert(1)</script> 
-	Don’t use vulnerable function for untrusted input such as eval(), element.innerHTML , element.outerHTML, document.write(), document.writeln() 
-	Use safer javascript functions such as: textContent or innerText :
-	element.textContent = untrustedData; 
-	element.innerText = untrustedData;
+3. Dom based XSS: XSS payload is executed as a result of modifying the DOM environment in the victim’s browser. The payload never gets sent to the server. Example: 
+```
+Vulnerable code: <script>document.write(“<b>current url: </b>:”+document.baseURI);</script>
+Attack payload: http://example.com/test.html#<script>alert(1)</script> 
+```
+<b>Mitigation of DOM based XSS: </b>
+* Don’t use vulnerable function for untrusted input such as eval(), element.innerHTML , element.outerHTML, document.write(), document.writeln()
+* Use safer javascript functions such as: textContent or innerText:
 
 <b>Generic mitigation against XSS: </b>
 1. Do output encoding, see language specific guides. 
@@ -288,10 +288,12 @@ A site with origin A can:
 When a browser loads a webpage, it enforces Same origin policy which means that it only allows content to be fetched from the same origin as the web page. However in some cases a webpage may need to access assets from multiple origins. 
 
 #### CSRF 
-CSRF example
-Mitigation:
-CSRF token
-Ask for password/2FA for sensitive operation. 
+CSRF example:
+<img src="http://192.168.0.104/xxxx/csrf_2.php?account=123-45678-90&amount=100&action=transfer" width="0" height="0" border="0">
+Browser loads the following since the user is already logged in to the application. 
+CSRF Mitigation:
+* CSRF token
+* Ask for password/2FA for sensitive operation. 
 	
 #### HTTP flags: 
 * <b>HTTP only</b> – Cookie not accessible by client side javascript. 
