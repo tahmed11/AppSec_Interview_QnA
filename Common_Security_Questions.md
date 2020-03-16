@@ -44,13 +44,15 @@ All People Seems To Need Data Processing
 192.x.x.x/22 => 1024 hosts
 
 #### DNS
-a. How does dns works 
-b. Cname – canonical name ex: example.com, www.example.com
-c. A and AAAA record – A and AAAA are type of address record map. Host to an IP address. A is ipv4 and AAAA is for ipv6. 
-d. PTR record – reverse of an A record. 
-e. DNS SOA record
-f. DNS use TCP for zone transfer, UDP for name queries. 
-g. How to do a DNS zone transfer 
+* How does dns works 
+* Cname – canonical name ex: example.com, www.example.com
+* A and AAAA record – A and AAAA are type of address record map. Host to an IP address. A is ipv4 and AAAA is for ipv6. 
+* PTR record – reverse of an A record. 
+* DNS SOA record
+*  DNS use TCP for zone transfer, UDP for name queries. 
+* How to do a DNS zone transfer: 
+	dig dns1.target.org -t axfr
+	dnsrecon.py -a -d dns1.target.org
 
 #### Tracer route 
 #### Ping 
@@ -97,46 +99,45 @@ HMAC is used for data integrity and authenticity of messages.
 
 
 #### Linux command: 
-a. Show logged in user
-b. Change password
-c. List of all open files and processes that opened them
-d. Show firewall config in Linux
-e. How to switch user 
-f. What is sudo
-g. Show cpuinfo, meminfo
-h. Find a file in Linux 
-i. Search for a string in linux
-j. Show list of openports 
-k. How to block IP in Linux machine (tbc)
-l. Nohup
-m. Count the number of lines returned
-n. Parse string with delimiters
+* Show logged in user - w
+* Change password - passwd
+* List of all open files and processes that opened them - lsof -i
+* Show firewall config in Linux - cat /etc/iptables
+* How to switch user - su
+* What is sudo - 
+* Show cpuinfo, meminfo - cat /etc/cpuinfo, cat /etc/meminfo
+* Find a file in Linux  - find /home -name "search.txt"
+* Search for a string in linux - grep -r -n "search_string" /home
+* Show list of openports - netstat -abno
+* Nohup
+* Count the number of lines returned - wc -l 
+* Parse string with delimiters - cut -d ":" -f1:f2
 
 #### Windows commands:
-a. Show current logged in user – query user
-b. Show windows system information - systeminfo
-c. Show list of all running processes – tasklist /SVC
-d.  show list of all local users in the computer – net users 
-e. Show info about a user – net user bob
-f. Find out all processes names and ports – netstat -abno
-g. Search for a file with name "proof.txt" – dir /S /P “proof.txt” 
-h. Search for a string in a file – findstr /s /c:”search_string”
-i. Run a program as another user – runas /noprofile /user:Administrator cmd.exe
-j. Find file/folder permissions - icacls.exe
-l. Show list of current installed patches  = wmic qfe
-m. Find the name of the current domain – wmic computersystem get domain
-n. Process Vs thread 
+* Show current logged in user – query user
+*  Show windows system information - systeminfo
+* Show list of all running processes – tasklist /SVC
+* Show list of all local users in the computer – net users 
+* Show info about a user – net user bob
+* Find out all processes names and ports – netstat -abno
+* Search for a file with name "proof.txt" – dir /S /P “proof.txt” 
+* Search for a string in a file – findstr /s /c:”search_string”
+* Run a program as another user – runas /noprofile /user:Administrator cmd.exe
+*  Find file/folder permissions - icacls.exe
+* Show list of current installed patches  = wmic qfe
+* Find the name of the current domain – wmic computersystem get domain
+* Process Vs thread 
 
 
 #### HTTP status codes: 
-a. Client error -4xx
-b. Client success -2xx
-c. Informational -1xx
-d. Redirection – 3xx
-e. Server error -5xx
+* Client error -4xx
+* Client success -2xx
+* Informational -1xx
+* Redirection – 3xx
+* Server error -5xx
 
 
-### Authentication 		
+### Authentication and Authorisation protocols 		
 #### SAML
 SAML SSO works by transferring the user’s identity from one place (the identity provider) to another (the service provider). This is done through an exchange of digitally signed XML documents.
 
@@ -148,8 +149,6 @@ Consider the following scenario: A user is logged into a system that acts as an 
 4. The identity provider builds the authentication response in the form of an XML-document containing the user’s username or email address, signs it using an X.509 certificate, and posts this information to the service provider.
 5. The service provider, which already knows the identity provider and has a certificate fingerprint, retrieves the authentication response and validates it using the certificate fingerprint.
 6. The identity of the user is established and the user is provided with app access.
-
-
 
 #### OpenID connect
 
@@ -186,10 +185,10 @@ There are five major threat modeling steps:
 
 
 #### Google dorks: 
-a. How to narrow search to a site 
-b. How to find specific string in URL
-c. How to return only certain specific file format
-d. How to return text found in body
+* How to narrow search to a site 
+* How to find specific string in URL
+* How to return only certain specific file format
+* How to return text found in body
 
 #### Buffer overflow: 
 There are different kind of buffer overflow vulnerabilities like stack based, heap based. Stack based are the most simplistic ones. As the name suggests stack based buffer overflow occurs due to overwrite of buffer space in memory. The below C program is vulnerable to buffer overflow. The main function call a vulnerable function. The vulnerable function takes 10 character strings as input parameter. Inside the function we use a vulnerable function(strcpy) to a fixed size buffer of 10 character size. When the main function calls the vulnerable function few things happen to the stack. First the parameter of the vulnerable function  will be pushed to the stack, then the return address of the main function will be saved on the stack. Once the function finish executing, stack pointer will return to this address to continue program execution. Now if we send a parameter with more than 10 characters say 100 character, then the return address will overwrite the buffer. Strcpy will copy the extra 90 characters beyond the allocated space. Since we control the buffer we can control arbitary memory address as the return address. Then the program execution will jump to the arbitary address where we can put our shellcode. 
@@ -211,8 +210,8 @@ strcpy(buff,str);
 1. Dont use vulnerable functions such as strcpy, etc.
 2. Always do bound checking
 3. Enabled by default ASLR -> Address space layout randomization
-4. DEP -> Dynamic execution prevention
-	bypass DEP -> ROP gadget
+4. DEP -> Dynamic execution prevention 
+    bypass DEP -> ROP gadget
 5. Stack canaries
 
 
@@ -237,41 +236,7 @@ Mechanism used to restrain, regulate or reduce vulnerabilities. Controls can be 
 4. Respond
 5. Recover
 
-#### Same origin policy
-Same origin policy defines:
-1.Each site has it’s own resources like cookie, DOM and javascript namespace
-2.Each page take it’s origin from it’s URL (protocol, domain and port).
-3.Script run it in the context of the origin which they are loaded. It doesn’t matter where you load it from only where it is finally executed. 
-4.Many resources like media and image are passive resources. They don’t have access to objects and resources in the context they are loaded. 
-Example: 
-A site with origin A can:
-1.Load a script from origin B, but it works in A’s context. 
-2.Can load from images, CSS, videos from Site B.
-3.Can load a page from origin B by iframe.
-4.Cannot reach DOM of the iframe loaded from Origin B. 
-#### CORS 
-When a browser loads a webpage, it enforces Same origin policy which means that it only allows content to be fetched from the same origin as the web page. However in some cases a webpage may need to access assets from multiple origins. 
-
-#### CSRF 
-CSRF example
-Mitigation:
-CSRF token
-Ask for password/2FA for sensitive operation. 
-	
-#### HTTP flags: 
-a. <b>HTTP only</b> – Cookie not accessible by client side javascript. 
-b.<b> Secure flag</b> – Only send cookie over HTTPS 
-c. <b>CSP flag:</b>
-The HTTP Content-Security-Policy response header allows website administrator to control resources the user agent is allowed to load for a given page. Policies can be tailored to only allow scripts to be loaded from specific domain to avoid loading malicious scripts. 
-Content-Security-Policy: default-src: ‘self’, script-src: http://example.com
-
-d. <b> HSTS flag:</b>
-HTTP Strict transport security is to enforce the use of HTTPS by the user agent. 
-<b>X-Frame options</b>
-X-Frame options tells the browser whether you want to allow your site to be frame or not. By preventing a browser from framing your site you can defend against <b>clickjacking</b> attacks. 
-Recommended: X-Frame-Options: SameOrigin. 
-
-#### OWASP Top 10:
+#### AppSec related questions
 ##### SQL injection
 Types of SQL injection
 1. Inband or inline: Output directly visible
@@ -305,3 +270,38 @@ Also CSP header automatically disable unsafe_inline and unsafe_eval functions wh
 ‘unsafe_eval’: Allows the use of javascript eval function. 
 
 #### Deserialization
+
+
+#### Same origin policy
+Same origin policy defines:
+1.Each site has it’s own resources like cookie, DOM and javascript namespace
+2.Each page take it’s origin from it’s URL (protocol, domain and port).
+3.Script run it in the context of the origin which they are loaded. It doesn’t matter where you load it from only where it is finally executed. 
+4.Many resources like media and image are passive resources. They don’t have access to objects and resources in the context they are loaded. 
+Example: 
+A site with origin A can:
+1.Load a script from origin B, but it works in A’s context. 
+2.Can load from images, CSS, videos from Site B.
+3.Can load a page from origin B by iframe.
+4.Cannot reach DOM of the iframe loaded from Origin B. 
+#### CORS 
+When a browser loads a webpage, it enforces Same origin policy which means that it only allows content to be fetched from the same origin as the web page. However in some cases a webpage may need to access assets from multiple origins. 
+
+#### CSRF 
+CSRF example
+Mitigation:
+CSRF token
+Ask for password/2FA for sensitive operation. 
+	
+#### HTTP flags: 
+* <b>HTTP only</b> – Cookie not accessible by client side javascript. 
+* <b>Secure flag</b> – Only send cookie over HTTPS 
+* <b>CSP flag:</b>
+The HTTP Content-Security-Policy response header allows website administrator to control resources the user agent is allowed to load for a given page. Policies can be tailored to only allow scripts to be loaded from specific domain to avoid loading malicious scripts. 
+Content-Security-Policy: default-src: ‘self’, script-src: http://example.com
+
+* <b>HSTS flag:</b>
+HTTP Strict transport security is to enforce the use of HTTPS by the user agent. 
+* <b>X-Frame options</b>
+X-Frame options tells the browser whether you want to allow your site to be frame or not. By preventing a browser from framing your site you can defend against <b>clickjacking</b> attacks. 
+Recommended: X-Frame-Options: SameOrigin. 
