@@ -141,7 +141,7 @@ e. Server error -5xx
 SAML SSO works by transferring the user’s identity from one place (the identity provider) to another (the service provider). This is done through an exchange of digitally signed XML documents.
 
 Consider the following scenario: A user is logged into a system that acts as an identity provider. The user wants to log in to a remote application, such as a support or accounting application (the service provider). The following happens:
-
+![SAML image](https://developers.onelogin.com/assets/img/pages/saml/sso-diagram.svg)
 1. The user accesses the remote application using a link on an intranet, a bookmark, or similar and the application loads.
 2. The application identifies the user’s origin (by application subdomain, user IP address, or similar) and redirects the user back to the identity provider, asking for authentication. This is the authentication request.
 3. The user either has an existing active browser session with the identity provider or establishes one by logging into the identity provider.
@@ -149,7 +149,7 @@ Consider the following scenario: A user is logged into a system that acts as an 
 5. The service provider, which already knows the identity provider and has a certificate fingerprint, retrieves the authentication response and validates it using the certificate fingerprint.
 6. The identity of the user is established and the user is provided with app access.
 
-![SAML image](https://developers.onelogin.com/assets/img/pages/saml/sso-diagram.svg)
+
 
 #### OpenID connect
 
@@ -164,10 +164,8 @@ Consider the following scenario: A user is logged into a system that acts as an 
 6. With the authorization code, the Client requests for an access token and ID token. ID token is a unique identifier of the end user.
 7. With the access token, the application asks the resource server to ask for specific resources such as user’s contact details from Google contacts, etc.
 
-
 For full OpenID connect you can visit my other blog post [here](https://medium.com/faun/threat-modeling-openid-connect-oauth-2-0-for-beginners-using-owasp-threat-dragon-part-1-b9e396fd7af9)
 
-#### Oauth 2.0
 #### Kerberos
 #### NTLM 
 
@@ -274,13 +272,17 @@ X-Frame options tells the browser whether you want to allow your site to be fram
 Recommended: X-Frame-Options: SameOrigin. 
 
 #### OWASP Top 10:
-a. Types of SQL injection
+##### SQL injection
+Types of SQL injection
 1. Inband or inline: Output directly visible
 2. Blind based injection: cannot see output
 3. Second order SQL injection: Injection get triggered after another function is called. 
-Explain XSS to a 5-year-old: 
-It’s like an evil person tells a 5-year-old to give all his/her money to the evil person, the evil person lies that the kid’s parent told them to do so. 
-b. Type of XSS
+
+Manual exploitation of SQL injection [here](https://github.com/tahmed11/appsec_interview/blob/master/manual_mysqli.md)
+Do take the time to learn how to manually exploit SQL injection. 
+
+##### Cross site scripting
+Types of XSS
 1. Reflected XSS: Requests get bounced back from the server. 
 2. Stored XSS: Requests are stored and sent back from the server. 
 3. Dom based XSS
