@@ -1,5 +1,5 @@
 
-### Basic linux question:
+### Basic networking question:
 #### OSI model
 All People Seems To Need Data Processing
 
@@ -29,8 +29,7 @@ All People Seems To Need Data Processing
 |Guaranteed transmission| No Guarantee |
 |Error checking and out of order | NO error checking and no order of data received |
 
-
- #### Port numbers: 
+#### Port numbers: 
    Kerberos - 88, syslogin- 514, FTP-20/21, SMTP-25, RDP-3389, IMAP-143, POP3-110, Telnet-23, SSH-22, SNMP-161, LDAP-389,
    DNS-53, SMB-445, 135-139
    
@@ -43,6 +42,18 @@ All People Seems To Need Data Processing
 /22 or how many hosts in /22
 2^32-22 = 2^10 (1024) hosts
 192.x.x.x/22 => 1024 hosts
+
+#### DNS
+a. How does dns works 
+b. Cname – canonical name ex: example.com, www.example.com
+c. A and AAAA record – A and AAAA are type of address record map. Host to an IP address. A is ipv4 and AAAA is for ipv6. 
+d. PTR record – reverse of an A record. 
+e. DNS SOA record
+f. DNS use TCP for zone transfer, UDP for name queries. 
+g. How to do a DNS zone transfer 
+
+#### Tracer route 
+#### Ping 
 
 #### Unix vs linux
 | Unix | Linux | 
@@ -84,61 +95,47 @@ two subkeys (k1 and k2) are derived from k.
 HMAC = hash(k2 | hash(k1|message))
 HMAC is used for data integrity and authenticity of messages. 
 
-#### DNS
-	a. How does dns works 
-	b. Cname – canonical name ex: example.com, www.example.com
-	c. A and AAAA record – A and AAAA are type of address record map. Host to an IP address. A is ipv4 and AAAA is for ipv6. 
-	d. PTR record – reverse of an A record. 
-	e. DNS SOA record
-	f. DNS use TCP for zone transfer, UDP for name queries. 
-	g. How to do a DNS zone transfer 
 
-	4. Linux command: 
-		a. Show logged in user
-		b. Change password
-		c. List of all open files and processes that opened them
-		d. Show firewall config in Linux
-		e. How to switch user 
-		f. What is sudo
-		g. Show cpuinfo, meminfo
-		h. Find a file in Linux 
-		i. Search for a string in linux
-		j. Show list of openports 
-		k. How to block IP in Linux machine (tbc)
-		l. Nohup
-		m. Count the number of lines returned
-		n. Parse string with delimiters
-	5. Windows question:
-		a. Show current logged in user – query user
-		b. Show windows system information - systeminfo
-		c. Show list of all running processes – tasklist /SVC
-		d.  show list of all local users in the computer – net users 
-		e. Show info about a user – net user bob
-		f. Find out all processes names and ports – netstat -abno
-		g. Search for a file with name "proof.txt" – dir /S /P “proof.txt” 
-		h. Search for a string in a file – findstr /s /c:”search_string”
-		i. Run a program as another user – runas /noprofile /user:Administrator cmd.exe
-		j. Find file/folder permissions - icacls.exe
-		l. Show list of current installed patches  = wmic qfe
-		m. Find the name of the current domain – wmic computersystem get domain
-		n. Process Vs thread 
-		
-	6. Tracer route 
-	7. Ping 
-	8. HTTP status codes: 
-		a. Client error -4xx
-		b. Client success -2xx
-		c. Informational -1xx
-		d. Redirection – 3xx
-		e. Server error -5xx
-	9. Long answer: 
-		a. Stack based buffer overflow 
-		b. Threat modelling technique 
-		c. OpenID connect
-		d. Oauth 2.0
-		e. SAML
-		f. Kerberos
-		g. NTLM 
+#### Linux command: 
+a. Show logged in user
+b. Change password
+c. List of all open files and processes that opened them
+d. Show firewall config in Linux
+e. How to switch user 
+f. What is sudo
+g. Show cpuinfo, meminfo
+h. Find a file in Linux 
+i. Search for a string in linux
+j. Show list of openports 
+k. How to block IP in Linux machine (tbc)
+l. Nohup
+m. Count the number of lines returned
+n. Parse string with delimiters
+
+#### Windows commands:
+a. Show current logged in user – query user
+b. Show windows system information - systeminfo
+c. Show list of all running processes – tasklist /SVC
+d.  show list of all local users in the computer – net users 
+e. Show info about a user – net user bob
+f. Find out all processes names and ports – netstat -abno
+g. Search for a file with name "proof.txt" – dir /S /P “proof.txt” 
+h. Search for a string in a file – findstr /s /c:”search_string”
+i. Run a program as another user – runas /noprofile /user:Administrator cmd.exe
+j. Find file/folder permissions - icacls.exe
+l. Show list of current installed patches  = wmic qfe
+m. Find the name of the current domain – wmic computersystem get domain
+n. Process Vs thread 
+
+
+#### HTTP status codes: 
+a. Client error -4xx
+b. Client success -2xx
+c. Informational -1xx
+d. Redirection – 3xx
+e. Server error -5xx
+
+
 ### Authentication 		
 #### SAML
 SAML SSO works by transferring the user’s identity from one place (the identity provider) to another (the service provider). This is done through an exchange of digitally signed XML documents.
@@ -152,7 +149,11 @@ Consider the following scenario: A user is logged into a system that acts as an 
 5. The service provider, which already knows the identity provider and has a certificate fingerprint, retrieves the authentication response and validates it using the certificate fingerprint.
 6. The identity of the user is established and the user is provided with app access.
 
-
+<<img>>
+#### OpenID connect
+#### Oauth 2.0
+#### Kerberos
+#### NTLM 
 
 #### Threat Modeling 
 There are five major threat modeling steps:
@@ -170,7 +171,7 @@ There are five major threat modeling steps:
 5. Validating that threats have been mitigated. 
 
 
-	10. Google dorks: 
+#### Google dorks: 
 		a. How to narrow search to a site 
 		b. How to find specific string in URL
 		c. How to return only certain specific file format
@@ -215,13 +216,12 @@ Risk = Impact x Likelihood
 Mechanism used to restrain, regulate or reduce vulnerabilities. Controls can be corrective, detective, preventive or deterrent. 
 
 ### NIST Cyber security framework:
-	1. Identify
-	2. Protect
-	3. Detect
-	4. Respond
-	5. Recover
+1. Identify
+2. Protect
+3. Detect
+4. Respond
+5. Recover
 
-CORS 
 #### Same origin policy
 Same origin policy defines:
 1.	Each site has it’s own resources like cookie, DOM and javascript namespace
@@ -243,19 +243,20 @@ Mitigation:
 CSRF token
 Ask for password/2FA for sensitive operation. 
 	
-	19. HTTP flags: 
-		a. HTTP only – Cookie not accessible by client side javascript. 
-		b. Secure flag – Only send cookie over HTTPS 
-		c. CSP flag 
+#### HTTP flags: 
+a. <b>HTTP only</b> – Cookie not accessible by client side javascript. 
+b.<b> Secure flag</b> – Only send cookie over HTTPS 
+c. <b>CSP flag:</b>
 The HTTP Content-Security-Policy response header allows website administrator to control resources the user agent is allowed to load for a given page. Policies can be tailored to only allow scripts to be loaded from specific domain to avoid loading malicious scripts. 
 Content-Security-Policy: default-src: ‘self’, script-src: http://example.com
 
-		d. HSTS flag
+d. <b> HSTS flag:</b>
 HTTP Strict transport security is to enforce the use of HTTPS by the user agent. 
-		e. X-Frame options
-X -Frame options tells the browser whether you want to allow your site to be frame or not. By preventing a browser from framing your site you can defend against <b>clickjacking</b> attacks. 
+<b>X-Frame options</b>
+X-Frame options tells the browser whether you want to allow your site to be frame or not. By preventing a browser from framing your site you can defend against <b>clickjacking</b> attacks. 
 Recommended: X-Frame-Options: SameOrigin. 
-	20. OWASP Top 10:
+
+#### OWASP Top 10:
 a. Types of SQL injection
 1. Inband or inline: Output directly visible
 2. Blind based injection: cannot see output
@@ -266,22 +267,22 @@ b. Type of XSS
 1. Reflected XSS: Requests get bounced back from the server. 
 2. Stored XSS: Requests are stored and sent back from the server. 
 3. Dom based XSS
-XSS payload is executed as a result of modifying the DOM environment in the victim’s browser. The payload never gets sent to the server. Example: 
-<script>document.write(“<b>current url: </b>:”+document.baseURI);</script>
-attack payload: http://example.com/test.html#<script>alert(1)</script> 
-Don’t use vulnerable function for untrusted input such as eval(), element.innerHTML , element.outerHTML, document.write(), document.writeln() 
-Use safer javascript functions such as: textContent or innerText :
-element.textContent = untrustedData; 
-element.innerText = untrustedData;
+	XSS payload is executed as a result of modifying the DOM environment in the victim’s browser. The payload never gets sent to the server. Example: 
+	<script>document.write(“<b>current url: </b>:”+document.baseURI);</script>
+	attack payload: http://example.com/test.html#<script>alert(1)</script> 
+	Don’t use vulnerable function for untrusted input such as eval(), element.innerHTML , element.outerHTML, document.write(), document.writeln() 
+	Use safer javascript functions such as: textContent or innerText :
+	element.textContent = untrustedData; 
+	element.innerText = untrustedData;
 
-Generic mitigation against XSS: 
-1.	Do output encoding, see language specific guides. 
-2.	Set HTTPOnly flag so cookies are not accessible by client side JavaScript.
-3.	The HTTP Content-Security-Policy response header allows website administrator to control resources the user agent is allowed to load for a given page. Policies can be tailored to only allow scripts to be loaded from specific domain to avoid loading malicious scripts. 
+<b>Generic mitigation against XSS: </b>
+1. Do output encoding, see language specific guides. 
+2. Set HTTPOnly flag so cookies are not accessible by client side JavaScript.
+3. The HTTP Content-Security-Policy response header allows website administrator to control resources the user agent is allowed to load for a given page. Policies can be tailored to only allow scripts to be loaded from specific domain to avoid loading malicious scripts. 
 Content-Security-Policy: default-src: ‘self’, script-src: http://example.com
 
 Also CSP header automatically disable unsafe_inline and unsafe_eval functions which further restricts XSS. 
 ‘unsafe_inline’: Allow resources embedded in the page, such as inline <script> elements, <style> slements and javascripts URLs. 
 ‘unsafe_eval’: Allows the use of javascript eval function. 
 
-e. Deserialization
+#### Deserialization
