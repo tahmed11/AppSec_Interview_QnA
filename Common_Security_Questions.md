@@ -206,9 +206,13 @@ There are five major threat modeling steps:
 
 #### Google dorks: 
 * How to narrow search to a site 
+Specifically searches that particular site and lists all the results for that site. 	site:"www.google.com" 
 * How to find specific string in URL
+Searches for a URL matching one of the keywords. 	inurl:"keyword"
 * How to return only certain specific file format
+Searches for a particular filetype mentioned in the query. 	filetype:"pdf"
 * How to return text found in body
+Searches for the occurrences of keywords all at once or one at a time. 	intext:"keyword"
 
 #### Buffer overflow: 
 There are different kind of buffer overflow vulnerabilities like stack based, heap based. Stack based are the most simplistic ones. As the name suggests stack based buffer overflow occurs due to overwrite of buffer space in memory. The below C program is vulnerable to buffer overflow. The main function call a vulnerable function. The vulnerable function takes 10 character strings as input parameter. Inside the function we use a vulnerable function(strcpy) to a fixed size buffer of 10 character size. When the main function calls the vulnerable function few things happen to the stack. First the parameter of the vulnerable function  will be pushed to the stack, then the return address of the main function will be saved on the stack. Once the function finish executing, stack pointer will return to this address to continue program execution. Now if we send a parameter with more than 10 characters say 100 character, then the return address will overwrite the buffer. Strcpy will copy the extra 90 characters beyond the allocated space. Since we control the buffer we can control arbitary memory address as the return address. Then the program execution will jump to the arbitary address where we can put our shellcode. 
