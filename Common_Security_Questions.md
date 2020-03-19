@@ -173,7 +173,21 @@ Consider the following scenario: A user is logged into a system that acts as an 
 For full OpenID connect you can visit my other blog post [here](https://medium.com/faun/threat-modeling-openid-connect-oauth-2-0-for-beginners-using-owasp-threat-dragon-part-1-b9e396fd7af9)
 
 #### Kerberos
-#### NTLM 
+#### NTLM
+![NTLM](https://filestore.community.support.microsoft.com/api/images/45bc59ef-a2e7-4a75-a129-8be12a01dd16?upload=true)
+The following steps present an outline of NTLM noninteractive authentication. The first step provides the user's NTLM credentials and occurs only as part of the interactive authentication (logon) process.
+1. (Interactive authentication only) A user accesses a client computer and provides a domain name, user name, and password. The client computes a cryptographic hash of the password and discards the actual password.
+2. The client sends the user name to the server (in plaintext).
+3. The server generates a 16-byte random number, called a challenge or nonce, and sends it to the client.
+4. The client encrypts this challenge with the hash of the user's password and returns the result to the server. This is called the response.
+5. The server sends the following three items to the domain controller:
+        User name
+        Challenge sent to the client
+        Response received from the client
+6. The domain controller uses the user name to retrieve the hash of the user's password from the Security Account Manager database. It uses this password hash to encrypt the challenge.
+7. The domain controller compares the encrypted challenge it computed (in step 6) to the response computed by the client (in step 4). If they are identical, authentication is successful.
+
+Ref: https://docs.microsoft.com/en-us/windows/win32/secauthn/microsoft-ntlm 
 
 #### Threat Modeling 
 There are five major threat modeling steps:
@@ -202,14 +216,14 @@ There are different kind of buffer overflow vulnerabilities like stack based, he
 Vulnerable program:
 ```
 void main(int argc, char *argv[]):
-	{
+{
 	vuln_function(argv[1])
 	return 0
-	}
+}
 void vuln_function(char *str):
 {
-char buff[10];
-strcpy(buff,str);
+	char buff[10];
+	strcpy(buff,str);
 }
 ```
 <b> Mitigation of buffer overflow</b>:
