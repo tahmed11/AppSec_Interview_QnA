@@ -1,4 +1,23 @@
 ### SQL injection :
+
+Vuln code:
+    # BAD -- Using string formatting   
+```
+        cursor.execute("SELECT * FROM users WHERE username = '%s'" % username)
+        user = cursor.fetchone()
+```
+GOOD -- Using parameters
+```
+        cursor.execute("SELECT * FROM users WHERE username = %s", username)
+        user = cursor.fetchone()
+```
+BAD -- Manually quoting placeholder (%s)
+```
+        cursor.execute("SELECT * FROM users WHERE username = '%s'", username)
+        user = cursor.fetchone()
+```
+From <https://help.semmle.com/wiki/display/PYTHON/SQL+query+built+from+user-controlled+sources> 
+
 Remediation:
 ```
 	Connection = mysql.connector.connect(host,db,user,pwd)
@@ -8,26 +27,6 @@ Remediation:
 	Cursor.execute(sql_query_insert,insert_tuple)
 	Connection.commit()
 ```
-
-Vuln code:
-    # BAD -- Using string formatting
-    ```
-        cursor.execute("SELECT * FROM users WHERE username = '%s'" % username)
-        user = cursor.fetchone()
-    ```
-        # GOOD -- Using parameters
-```
-        cursor.execute("SELECT * FROM users WHERE username = %s", username)
-        user = cursor.fetchone()
-```
-        # BAD -- Manually quoting placeholder (%s)
-```
-        cursor.execute("SELECT * FROM users WHERE username = '%s'", username)
-        user = cursor.fetchone()
-```
-From <https://help.semmle.com/wiki/display/PYTHON/SQL+query+built+from+user-controlled+sources> 
-
-
 ### Code execution:
 ```
   def code_execution(request):
@@ -43,8 +42,6 @@ From <https://help.semmle.com/wiki/display/PYTHON/SQL+query+built+from+user-cont
           setname(first_name)
 ```
   From <https://help.semmle.com/wiki/display/PYTHON/Code+injection> 
-
-
 
 ### XXE:
 Vulnerable code: 
