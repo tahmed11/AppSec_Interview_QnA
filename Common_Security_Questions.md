@@ -54,8 +54,11 @@ All People Seems To Need Data Processing
 	dig dns1.target.org -t axfr
 	dnsrecon.py -a -d dns1.target.org
 
-#### Tracer route 
-#### Ping 
+#### Traceroute
+Sends ICMP echo request packets with increasing TTL values. First packet will be of TTL value  1, so first host will return unreachable. Second packet will be of TTL value of 2 so second host will return unreachable. This process continue until destination is reached. 
+
+#### Ping
+Sends ICMP echo messages to the host. Once the host received the packets, the host responds. This way total round trip time is calculated. 
 
 #### Unix vs linux
 | Unix | Linux | 
@@ -126,8 +129,12 @@ HMAC is used for data integrity and authenticity of messages.
 *  Find file/folder permissions - icacls.exe
 * Show list of current installed patches  = wmic qfe
 * Find the name of the current domain – wmic computersystem get domain
-* Process Vs thread 
 
+* <b>Process Vs thread </b>
+* Process:
+Process means any program in execution. A process can create other child processes. Process run on their own memory hence they run on isolation. Each process start with single thread but can create multiple threads. 
+* Thread: 
+A thread is an entity within a process. All threads of a process share it's virtual address space and system resources. 
 
 #### HTTP status codes: 
 * Client error -4xx
@@ -183,7 +190,6 @@ There are five major threat modeling steps:
 4. Mitigating threats. 
 5. Validating that threats have been mitigated. 
 
-
 #### Google dorks: 
 * How to narrow search to a site 
 * How to find specific string in URL
@@ -236,7 +242,7 @@ Mechanism used to restrain, regulate or reduce vulnerabilities. Controls can be 
 4. Respond
 5. Recover
 
-#### AppSec related questions
+#### Web Security related questions
 ##### SQL injection
 Types of SQL injection
 1. Inband or inline: Output directly visible
