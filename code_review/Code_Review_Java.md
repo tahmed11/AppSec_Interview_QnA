@@ -77,8 +77,9 @@ element.textContent = untrustedData;
 element.innerText = untrustedData; 
 ```
 
-Generic mitiation against XSS:1. Set HTTPOnly cookie so cookie cannot be accessed by client side code
-1. Set CSP header, source to self so only javascript payload from selected site can be loaded and executed. 
+Generic mitiation against XSS:
+1. Set HTTPOnly cookie so cookie cannot be accessed by client side code
+2. Set CSP header, source to self so only javascript payload from selected site can be loaded and executed. 
 		CSP header automatically disable 'unsafe_inline' and 'unsafe_eval'
 		Unsafe_inline: allows resources embedded in the page such as inline <script> elements, style elements and javascript urls. 
 		Unsafe_eval: allows the use of javascript eval function. 
