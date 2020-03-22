@@ -1,6 +1,6 @@
 ### SQL injection: 
 
-Prepared statement: it's easier to use org.springframework.jdbc.core.JdbcTemplate from the framework it's provide prepared statement by default
+Use prepared statement: 
 ```
 SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", 1);
 return namedParameterJdbcTemplate.queryForObject(
@@ -11,6 +11,7 @@ stmt.setString(1, userid);
 stmt.setString(2, password);
 ResultSet rs = stmt.executeQuery();
 ```
+For springframework: use org.springframework.jdbc.core.JdbcTemplate from the framework it's provide prepared statement by default.
 
 SQL/ORM injection using TypeQuery:
 From <https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-persistence-api-jpa> 
@@ -63,7 +64,7 @@ public AttackResult completed(@RequestParam String editor) {
             Document doc = Jsoup.parse(unescapedString);
             String[] lines = unescapedString.split("<html>");
 ```
-### DOM Based XSS: 
+### DOM Based XSS:
 Don’t use the following to accept user input: 
 ```
 element.innerHTML = "<HTML> Tags and markup";
