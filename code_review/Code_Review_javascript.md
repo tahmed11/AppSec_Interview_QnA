@@ -1,3 +1,20 @@
+### Javascript
+
+Check for common javascript problems: 
+* eval
+* DOM based XSS: document.write, document.writeln(), innerHTML , outerHTML
+grep -r -n "document.write" 
+grep -r -n "document.writeln()" .
+grep -r -n "innerHTML" .
+grep -r -n "outerHTML" . 
+
+### React
+
+grep -r -n "dangerouslysetinnerHTML" . 
+grep -r -n "JSON.stringify" . 
+
+
+### Angular 
 Check for bypass sanitization
 * bypassSecurityTrustHtml
 * bypassSecurityTrustScript
@@ -7,14 +24,6 @@ Check for bypass sanitization
 
 From <https://angular.io/guide/security> 
 * grep -r -n "bypassSecurity" . 
-
-Check for common javascript problems: 
-* eval
-* DOM based XSS: document.write, document.writeln(), innerHTML , outerHTML
-grep -r -n "document.write" 
-grep -r -n "document.writeln()" .
-grep -r -n "innerHTML" .
-grep -r -n "outerHTML" . 
 
 Mitigate CSRF 
 Angular has built-in CSRF protection mechanisms. All we have to do is adding the following lines to our AppModule:
