@@ -106,6 +106,14 @@ response.setOutput(readValue);
 ### XXE:
 Disable DTD while parsing XML. 
 Different XML parser has different mechansim to disable XXE.
+To disable external entity processing for XMLInputFactory, configure one of the properties XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES or XMLInputFactory.SUPPORT_DTD to false.
+
+To disable external entity processing for SAXParserFactory, XMLReader or DocumentBuilderFactory configure one of the features XMLConstants.FEATURE_SECURE_PROCESSING or "http://apache.org/xml/features/disallow-doctype-decl" to true.
+
+To disable external entity processing for Validator, configure both properties XMLConstants.ACCESS_EXTERNAL_DTD, XMLConstants.ACCESS_EXTERNAL_SCHEMA to the empty string "".
+
+
+
 For example:
 ```
 Or.xml.sax.XMLReader
