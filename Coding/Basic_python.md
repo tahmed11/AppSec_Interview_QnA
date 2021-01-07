@@ -7,6 +7,9 @@ def main():
 
 Write a function: def function():
 
+One line if else:
+product = "iphone" if var == 'iphone X' else False
+		
 For loop: for i in range (1,len(list),1):
 For each loop: for item in dict/list/set/etc
 
