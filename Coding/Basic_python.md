@@ -13,6 +13,8 @@ product = "iphone" if var == 'iphone X' else False
 For loop: for i in range (1,len(list),1):
 For each loop: for item in dict/list/set/etc
 
+one line for loop: for line in lines: adding_list.append(line)
+	
 From random import randint
 Int x = randint(1,100)
 
