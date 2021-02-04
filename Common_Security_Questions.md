@@ -43,6 +43,11 @@ All People Seems To Need Data Processing
 2^32-22 = 2^10 (1024) hosts
 192.x.x.x/22 => 1024 hosts
 
+Private address range
+10.0.0.0    - 10.255.255.255
+172.16.0.0  - 172.31.255.255
+192.168.0.0 - 192.168.255.255
+
 #### DNS
 * How does dns works 
 * Cname – canonical name ex: example.com, www.example.com
