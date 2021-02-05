@@ -59,6 +59,8 @@ Private address range
 	dig dns1.target.org -t axfr
 	dnsrecon.py -a -d dns1.target.org
 
+![alt text](https://0xpatrik.com/content/images/2018/06/takeover_basic.png)
+
 #### Traceroute
 Sends ICMP echo request packets with increasing TTL values. First packet will be of TTL value  1, so first host will return unreachable. Second packet will be of TTL value of 2 so second host will return unreachable. This process continue until destination is reached. 
 
