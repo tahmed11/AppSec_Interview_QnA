@@ -234,8 +234,10 @@ os.environ['variable']="anything"
 
 Get Environment variable in python:
 print(os.environ['variable'])
-	   
-	       
+
+Timestamp in: 2022_Jan_05_07_09_00_output.csv
+import datetime
+timestamp = datetime.datetime.now().strftime("%Y_%b_%d_%H_%M_%S_")	       
 	       
 	       
 	       
