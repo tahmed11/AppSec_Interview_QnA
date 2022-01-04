@@ -228,3 +228,14 @@ os.path.exists('output.txt')
 Dump a dict to json: json_dump = json.dump(dict)
 
 Convert json to dict: json_dump = json.loads(json_text)
+	       
+Set Environment variable in python:
+os.environ['variable']="anything"
+
+Get Environment variable in python:
+print(os.environ['variable'])
+	   
+	       
+	       
+	       
+	       
