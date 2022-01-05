@@ -239,5 +239,15 @@ Timestamp in: 2022_Jan_05_07_09_00_output.csv
 import datetime
 timestamp = datetime.datetime.now().strftime("%Y_%b_%d_%H_%M_%S_")	       
 	       
+Requests:
+import requests
+
+r = requests.get('https://api.github.com/events')
 	       
+r = requests.post('https://httpbin.org/post', data = {'key':'value'})	       
 	       
+headers = {'user-agent': 'my-app/0.0.1'}	       
+	       
+r = requests.get(url, headers=headers)	 	       
+	       
+	      
