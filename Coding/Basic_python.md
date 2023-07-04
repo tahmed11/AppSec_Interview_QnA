@@ -228,6 +228,8 @@ os.path.exists('output.txt')
 Dump a dict to json: json_dump = json.dump(dict)
 
 Convert json to dict: json_dump = json.loads(json_text)
+
+removed_new_lines_set = set([line.rstrip() for line in open('input.txt')])
 	       
 Set Environment variable in python:
 os.environ['variable']="anything"
